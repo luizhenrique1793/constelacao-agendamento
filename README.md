@@ -7,7 +7,7 @@ Página pública, responsiva e acessível para agendar sessões de Constelação
 Requer Node.js 18 ou superior.
 
 ```powershell
-$env:N8N_KATIA_AGENDA_URL = 'https://n8n.automaleads.cloud/webhook/katia_agenda'
+$env:N8N_KATIA_AGENDA_URL = 'https://seu-n8n.exemplo/webhook/seu-webhook'
 npm start
 ```
 

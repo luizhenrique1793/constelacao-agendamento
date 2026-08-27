@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const PORT = Number(process.env.PORT || 3000);
-const WEBHOOK_URL = process.env.N8N_KATIA_AGENDA_URL || 'https://n8n.automaleads.cloud/webhook/katia_agenda';
+const WEBHOOK_URL = process.env.N8N_KATIA_AGENDA_URL;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const MAX_BODY_BYTES = 50 * 1024;
 
@@ -71,6 +71,10 @@ function readJson(request) {
 }
 
 async function handleAppointment(request, response) {
+  if (!WEBHOOK_URL) {
+    console.error('N8N_KATIA_AGENDA_URL não foi configurada no servidor.');
+    return json(response, 503, { sucesso: false, mensagem: 'O agendamento está temporariamente indisponível. Tente novamente mais tarde.' });
+  }
   let body;
   try { body = await readJson(request); } catch { return json(response, 400, { sucesso: false, mensagem: 'Solicitação inválida.' }); }
   const checked = validAppointment(body);
