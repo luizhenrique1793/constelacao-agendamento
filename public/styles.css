@@ -43,6 +43,17 @@ h1 { max-width: 550px; margin-bottom: 18px; font-family: Georgia, 'Times New Rom
 .step-heading > span { display: grid; flex: 0 0 30px; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: var(--forest); background: var(--sage); font-size: .82rem; font-weight: 700; }
 .step-heading h2 { margin: 2px 0 5px; font-family: Georgia, 'Times New Roman', serif; font-size: 1.46rem; font-weight: 400; }
 .step-heading p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+.date-options { display: flex; gap: 10px; padding: 2px 1px 10px; overflow-x: auto; scrollbar-width: thin; }
+.date-option { display: grid; flex: 0 0 73px; min-height: 90px; place-items: center; padding: 10px 7px; border: 1px solid var(--line); border-radius: 13px; color: var(--ink); background: #fffefa; transition: transform .15s ease, border-color .15s ease, background .15s ease; }
+.date-option strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.46rem; font-weight: 400; line-height: 1; }
+.date-option span { color: var(--muted); font-size: .7rem; text-transform: capitalize; }
+.date-option small { color: var(--forest); font-size: .62rem; font-weight: 700; }
+.date-option:hover:not(:disabled) { border-color: var(--forest); background: #f4f8f1; transform: translateY(-2px); }
+.date-option.is-selected { border-color: var(--forest); color: #fff; background: var(--forest); box-shadow: 0 6px 14px rgba(48, 77, 59, .2); }
+.date-option.is-selected span, .date-option.is-selected small { color: #e4eee0; }
+.date-option.is-sold-out { cursor: not-allowed; border-color: #e6d7d0; color: #9b8d87; background: #f8f3f0; }
+.date-option.is-sold-out span, .date-option.is-sold-out small { color: #ac948a; }
+.more-dates { margin-top: 5px; }
 .calendar { padding: 17px 19px; border: 1px solid var(--line); border-radius: 16px; background: #fffefa; }
 .calendar-header { display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; margin-bottom: 16px; text-align: center; }
 .calendar-header h3 { margin: 0; color: var(--forest-deep); font-family: Georgia, 'Times New Roman', serif; font-size: 1.08rem; font-weight: 400; text-transform: capitalize; }
