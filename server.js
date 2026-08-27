@@ -198,7 +198,10 @@ async function handleAdminAction(request, response) {
   const payload = validAdminPayload(body);
   if (!payload) return json(response, 400, { sucesso: false, mensagem: 'Dados do horário inválidos.' });
   try {
-    return json(response, 200, await sendToN8n(payload, true));
+    console.info('Ação administrativa solicitada:', { acao: payload.acao, inicio: payload.inicio });
+    const result = await sendToN8n(payload, true);
+    console.info('Ação administrativa concluída:', { acao: payload.acao, status: result.status || 'sem_status' });
+    return json(response, 200, result);
   } catch (error) {
     console.error('Falha ao comunicar com a administração n8n:', { acao: payload.acao, erro: error?.cause?.code || error?.name, mensagem: error?.message });
     return json(response, 502, { sucesso: false, mensagem: 'Não foi possível atualizar a agenda agora. Tente novamente.' });

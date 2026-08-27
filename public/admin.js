@@ -73,7 +73,13 @@ async function loadSlots() {
 async function changeSlot(time, action) {
   if (loading) return; loading = true; showStatus(action === 'admin_bloquear' ? 'Bloqueando horário...' : 'Liberando horário...'); renderSlots();
   try { await api('/api/admin/agenda', { acao: action, ...interval(selectedDate, time) }); await loadSlotsAfterAction(); }
-  catch (error) { if (error.status === 401) return logout(true); showStatus(error.message); loading = false; await loadSlots(); }
+  catch (error) {
+    if (error.status === 401) return logout(true);
+    const message = error.message;
+    loading = false;
+    await loadSlots();
+    showStatus(message);
+  }
 }
 async function loadSlotsAfterAction() { loading = false; await loadSlots(); }
 function openPanel() { loginSection.hidden = true; panelSection.hidden = false; selectedDate = nextDates()[0]; renderDates(); loadSlots(); }
