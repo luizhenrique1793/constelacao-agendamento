@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Painel da agenda | Katia Melo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <section id="admin-login" class="admin-login-card" aria-labelledby="admin-login-title">
+        <p class="eyebrow">Katia Melo · Área privada</p>
+        <h1 id="admin-login-title">Gerencie a agenda</h1>
+        <p>Bloqueie ou libere horários sem alterar os agendamentos das clientes.</p>
+        <form id="login-form">
+          <label for="admin-password">Senha do painel</label>
+          <input id="admin-password" type="password" autocomplete="current-password" required />
+          <p id="login-error" class="field-error" role="alert"></p>
+          <button class="submit-button" type="submit">Entrar no painel</button>
+        </form>
+      </section>
+
+      <section id="admin-panel" hidden aria-labelledby="admin-title">
+        <header class="admin-header">
+          <div><p class="eyebrow">Katia Melo · Área privada</p><h1 id="admin-title">Agenda de atendimentos</h1><p>Use os controles apenas para horários que você não poderá atender.</p></div>
+          <button id="logout" class="admin-logout" type="button">Sair</button>
+        </header>
+        <section class="admin-card" aria-labelledby="admin-date-title">
+          <div class="admin-card-heading"><div><p class="section-kicker">Próximas datas</p><h2 id="admin-date-title">Escolha uma data</h2></div><button id="refresh-slots" class="text-button" type="button">Atualizar horários</button></div>
+          <div id="admin-dates" class="admin-dates" aria-label="Datas disponíveis para administrar"></div>
+          <p id="admin-date-label" class="admin-date-label" aria-live="polite"></p>
+          <div id="admin-status" class="status-message" role="status" hidden></div>
+          <div id="admin-slots" class="admin-slots" aria-label="Horários da data selecionada"></div>
+          <p class="admin-note">“Ocupado” indica um agendamento de cliente. O painel nunca permite liberar esse tipo de evento.</p>
+        </section>
+      </section>
+    </main>
+    <script src="/admin.js" defer></script>
+  </body>
+</html>

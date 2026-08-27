@@ -45,3 +45,15 @@ O projeto inclui um `Dockerfile` e pode ser publicado diretamente a partir do re
 4. Configure o domínio, habilite HTTPS e publique.
 
 O health check do container verifica `GET /`. Após o deploy, faça um teste completo de consulta e um agendamento real no domínio público.
+
+## Painel administrativo
+
+O painel privado fica em `/admin`. Ele permite bloquear e liberar somente os horários padrão sem remover agendamentos de clientes.
+
+Além de `N8N_KATIA_AGENDA_URL`, configure no Easypanel:
+
+- `ADMIN_PASSWORD`: senha longa e exclusiva para acesso ao painel;
+- `ADMIN_SESSION_SECRET`: valor aleatório longo, usado para assinar a sessão;
+- `N8N_ADMIN_SECRET`: segredo compartilhado com a variável de ambiente `KATIA_ADMIN_SECRET` do serviço n8n.
+
+O workflow n8n deve ser estendido com as ações `admin_consultar`, `admin_bloquear` e `admin_liberar`, validando o cabeçalho `X-Admin-Secret`. Consulte `N8N/ADMINISTRACAO.md` antes de publicar o painel.
