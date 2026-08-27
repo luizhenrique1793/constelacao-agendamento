@@ -1,0 +1,16 @@
+{
+  "name": "constelacao-agendamento",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Página pública de agendamento de Constelação com Katia Melo.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "lint": "node --check server.js && node --check public/app.js",
+    "typecheck": "node --check server.js && node --check public/app.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

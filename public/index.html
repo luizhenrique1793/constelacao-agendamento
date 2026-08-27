@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Agende sua sessão de Constelação com Katia Melo." />
+    <title>Agende sua Constelação | Katia Melo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="booking-card" aria-labelledby="page-title">
+        <header class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Katia Melo · Constelação Sistêmica</p>
+            <h1 id="page-title">Um novo olhar<br />para a sua história.</h1>
+            <p class="hero-lead">Escolha seu momento de Constelação com leveza, presença e acolhimento.</p>
+            <a class="hero-cta" href="#agendar">Quero agendar minha Constelação <span aria-hidden="true">→</span></a>
+            <p class="cta-support">Leva menos de dois minutos para escolher seu horário.</p>
+            <div class="hero-note"><span aria-hidden="true">✦</span> Atendimentos às terças e quintas</div>
+          </div>
+          <div class="portrait-wrap"><img src="/foto-katia.jpg" alt="Katia Melo" class="portrait" /></div>
+        </header>
+
+        <section class="about-session" aria-labelledby="about-title">
+          <div class="about-intro">
+            <p class="section-kicker">Um convite ao seu processo</p>
+            <h2 id="about-title">Por que agendar uma Constelação?</h2>
+            <p>Um espaço para olhar com mais clareza para relações, padrões e questões que pedem um novo lugar na sua vida.</p>
+            <div class="about-points" aria-label="O que você encontra na sessão"><span>Escuta acolhedora</span><span>Olhar sistêmico</span><span>Mais clareza</span></div>
+          </div>
+          <aside class="bio-card" aria-label="Sobre Katia Melo">
+            <p class="bio-label">Prazer, eu sou</p>
+            <h3>Katia Melo</h3>
+            <p class="bio-role">Advogada, empresária, escritora e consteladora sistêmica.</p>
+            <p class="bio-text">Minha missão é ajudar pessoas a compreenderem padrões familiares e emocionais para abrir espaço a mais equilíbrio e leveza.</p>
+            <p class="bio-signature">Vamos caminhar juntos?</p>
+          </aside>
+        </section>
+
+        <section id="agendar" class="step" aria-labelledby="date-title">
+          <div class="step-heading"><span>1</span><div><h2 id="date-title">Escolha a data</h2><p>Atendimentos às terças e quintas-feiras.</p></div></div>
+          <div class="calendar" aria-label="Calendário de datas disponíveis">
+            <div class="calendar-header"><button id="previous-month" class="icon-button" type="button" aria-label="Mês anterior">‹</button><h3 id="month-label" aria-live="polite"></h3><button id="next-month" class="icon-button" type="button" aria-label="Próximo mês">›</button></div>
+            <div class="weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+            <div id="calendar-days" class="calendar-days"></div>
+          </div>
+          <p id="date-help" class="assistive" aria-live="polite">Selecione uma terça ou quinta-feira futura.</p>
+        </section>
+
+        <section id="time-step" class="step is-muted" aria-labelledby="time-title">
+          <div class="step-heading"><span>2</span><div><h2 id="time-title">Escolha o horário</h2><p id="time-description">Primeiro, escolha uma data.</p></div></div>
+          <div id="availability-message" class="status-message" role="status" hidden></div>
+          <div class="slots" aria-label="Horários disponíveis">
+            <button class="slot" type="button" data-time="14:30" disabled><strong>14:30</strong><small>Escolha uma data</small></button>
+            <button class="slot" type="button" data-time="15:30" disabled><strong>15:30</strong><small>Escolha uma data</small></button>
+          </div>
+          <button id="retry" class="text-button" type="button" hidden>Consultar novamente</button>
+        </section>
+
+        <section id="details-step" class="step is-muted" aria-labelledby="details-title">
+          <div class="step-heading"><span>3</span><div><h2 id="details-title">Seus dados</h2><p>Usaremos apenas para confirmar seu horário.</p></div></div>
+          <form id="booking-form" novalidate>
+            <div class="field"><label for="name">Nome completo</label><input id="name" name="name" autocomplete="name" type="text" minlength="3" placeholder="Como podemos te chamar?" disabled required /><p id="name-error" class="field-error" aria-live="polite"></p></div>
+            <div class="field"><label for="phone">WhatsApp</label><input id="phone" name="phone" autocomplete="tel" inputmode="numeric" type="tel" placeholder="(00) 00000-0000" disabled required /><p id="phone-error" class="field-error" aria-live="polite"></p></div>
+            <div id="summary" class="summary" hidden></div>
+            <p id="form-error" class="form-error" role="alert" hidden></p>
+            <button id="submit" class="submit-button" type="submit" disabled>Confirmar agendamento</button>
+          </form>
+        </section>
+      </section>
+      <section id="success" class="success-card" aria-live="polite" hidden></section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
