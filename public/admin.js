@@ -64,7 +64,10 @@ async function loadSlots() {
   if (!selectedDate || loading) return; loading = true; showStatus('Consultando a agenda...'); dateLabel.textContent = humanDate(selectedDate); renderSlots();
   try {
     const answers = await Promise.all(times.map(async (time) => [time, await api('/api/admin/agenda', { acao: 'admin_consultar', ...interval(selectedDate, time) })]));
-    const states = Object.fromEntries(answers.map(([time, answer]) => [time, answer.status])); renderSlots(states); showStatus('');
+    const states = Object.fromEntries(answers.map(([time, answer]) => [time, answer.status]));
+    loading = false;
+    renderSlots(states);
+    showStatus('');
   } catch (error) {
     if (error.status === 401) return logout(true);
     showStatus(error.message); renderSlots({ '14:30': 'erro', '15:30': 'erro' });
