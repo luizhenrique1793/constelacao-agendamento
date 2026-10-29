@@ -213,7 +213,7 @@ function serveStatic(request, response) {
   const safePath = path.normalize(urlPath).replace(/^([.]{2}[\\/])+/, '');
   const filePath = path.join(PUBLIC_DIR, safePath);
   if (!filePath.startsWith(PUBLIC_DIR)) { response.writeHead(403); return response.end(); }
-  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' };
+  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.mp4': 'video/mp4' };
   fs.readFile(filePath, (error, file) => {
     if (error) { response.writeHead(error.code === 'ENOENT' ? 404 : 500); return response.end(); }
     response.writeHead(200, { 'Content-Type': types[path.extname(filePath)] || 'application/octet-stream' });
