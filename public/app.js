@@ -138,8 +138,8 @@ form.addEventListener('submit', async (event) => {
       document.querySelector('.booking-card').hidden = true; success.hidden = false;
       success.innerHTML = `<div class="success-mark">✓</div><h2>Agendamento confirmado!</h2><p>Sua Constelação com Katia Melo foi agendada para ${readableDate(selectedDate)}, às ${selectedTime}.</p>`;
       const message = encodeURIComponent(`Oi, Katia! Acabei de confirmar meu agendamento de Constelação para ${readableDate(selectedDate)}, às ${selectedTime}.`);
-      success.innerHTML += `<a class="whatsapp-button" href="https://wa.me/5544988122353?text=${message}" target="_blank" rel="noopener noreferrer">Confirmar pelo WhatsApp</a>`;
-      success.focus(); window.scrollTo({ top: 0, behavior: 'smooth' }); return;
+      success.innerHTML += `<a class="whatsapp-button" href="https://wa.me/5544988584236?text=${message}" target="_blank" rel="noopener noreferrer">Confirmar pelo WhatsApp</a>`;
+      success.focus({ preventScroll: true }); success.scrollIntoView({ behavior: 'smooth', block: 'center' }); return;
     }
     if (result.status === 'horario_ocupado') { document.querySelector('#form-error').textContent = 'Este horário acabou de ficar indisponível. Escolha outro horário para continuar.'; document.querySelector('#form-error').hidden = false; await checkAvailability(); return; }
     throw new Error('booking_failed');
